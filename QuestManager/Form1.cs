@@ -21,7 +21,29 @@ namespace QuestManager
         public Form1(string path)
         {
             InitializeComponent();
+
             var g = File.Open(path);
+
+            if (g.ReadOnly)
+            {
+                включитьToolStripMenuItem.Checked = true;
+                выключитьToolStripMenuItem.Checked = false;
+
+                сохранитьToolStripMenuItem.Enabled = false;
+                защитаОтЗаписиToolStripMenuItem.Enabled = false;
+                MessageBox.Show("Внимание! Включена защита от записи данного файла. Редактирование невозможно");
+            }
+            else
+            {
+                включитьToolStripMenuItem.Checked = false;
+                выключитьToolStripMenuItem.Checked = true;
+
+                сохранитьToolStripMenuItem.Enabled = true;
+                защитаОтЗаписиToolStripMenuItem.Enabled = true;
+            }
+
+            toolStripTextBox1.Text = g.Author;
+
             qm = QuestFiles.Quest.QuestManager.FromFile(g);
             TreeCreate();
             treeView1.CollapseAll();
@@ -97,6 +119,27 @@ namespace QuestManager
             if (opg.ShowDialog() == DialogResult.OK)
             {
                 var g = File.Open(opg.FileName);
+
+                if (g.ReadOnly)
+                {
+                    включитьToolStripMenuItem.Checked = true;
+                    выключитьToolStripMenuItem.Checked = false;
+
+                    сохранитьToolStripMenuItem.Enabled = false;
+                    защитаОтЗаписиToolStripMenuItem.Enabled = false;
+                    MessageBox.Show("Внимание! Включена защита от записи данного файла. Редактирование невозможно");
+                }
+                else
+                {
+                    включитьToolStripMenuItem.Checked = false;
+                    выключитьToolStripMenuItem.Checked = true;
+
+                    сохранитьToolStripMenuItem.Enabled = true;
+                    защитаОтЗаписиToolStripMenuItem.Enabled = true;
+                }
+
+                toolStripTextBox1.Text = g.Author;
+
                 qm = QuestFiles.Quest.QuestManager.FromFile(g);
                 TreeCreate();
             }
@@ -106,9 +149,14 @@ namespace QuestManager
         {
             SaveFileDialog opg = new SaveFileDialog();
             opg.Filter = "*.qbin|*.qbin";
+            opg.FileName = qm.Name;
             if (opg.ShowDialog() == DialogResult.OK)
             {
-                qm.ToFile().Save(opg.FileName);
+                var sfile = qm.ToFile();
+
+                var file = new File(sfile.Name, sfile.Quest, FormatVersion.Two, sfile.Checksym, File.BoolToByte(GetReadOnly), QuestLibrary.QuestFiles.Sign.Sign.GetSign, GetAuthor);
+
+                file.Save(opg.FileName);
             }
         }
 
@@ -187,6 +235,53 @@ namespace QuestManager
         private void развернутьВсёToolStripMenuItem_Click(object sender, EventArgs e)
         {
             treeView1.ExpandAll();
+        }
+
+        private void создатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetText ST = new SetText();
+            if (ST.ShowDialog() == DialogResult.OK)
+            {
+                qm = QuestFiles.Quest.QuestManager.Create(ST.Return);
+                toolStripTextBox1.Text = Environment.UserName;
+                qm.AddQuest("Start", "Start", new string[0], "");
+                TreeCreate();
+            }
+            else
+                MessageBox.Show("Ошибка");
+        }
+
+        private bool GetReadOnly
+        {
+            get
+            {
+                if (включитьToolStripMenuItem.Checked)
+                    return true;
+                else if (выключитьToolStripMenuItem.Checked)
+                    return false;
+                else
+                    return false;
+            }
+        }
+
+        private string GetAuthor
+        {
+            get
+            {
+                return toolStripTextBox1.Text;
+            }
+        }
+
+        private void включитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            включитьToolStripMenuItem.Checked = true;
+            выключитьToolStripMenuItem.Checked = false;
+        }
+
+        private void выключитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            включитьToolStripMenuItem.Checked = false;
+            выключитьToolStripMenuItem.Checked = true;
         }
     }
 }

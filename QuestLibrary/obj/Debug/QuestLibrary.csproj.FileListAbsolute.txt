@@ -1,0 +1,5 @@
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestLibrary\bin\Debug\QuestLibrary.dll
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestLibrary\bin\Debug\QuestLibrary.pdb
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestLibrary\obj\Debug\QuestLibrary.dll
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestLibrary\obj\Debug\QuestLibrary.pdb
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestLibrary\obj\Debug\QuestLibrary.csprojResolveAssemblyReference.cache

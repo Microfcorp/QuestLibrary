@@ -1,0 +1,11 @@
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\bin\Debug\QuestManager.exe
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\bin\Debug\QuestManager.pdb
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.csprojResolveAssemblyReference.cache
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.Form1.resources
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.Properties.Resources.resources
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.csproj.GenerateResource.Cache
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.exe
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.pdb
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\bin\Debug\QuestLibrary.dll
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\bin\Debug\QuestLibrary.pdb
+C:\Users\Лехап\Source\Repos\Pseudographic\QuestManager\QuestManager\obj\Debug\QuestManager.SetText.resources
